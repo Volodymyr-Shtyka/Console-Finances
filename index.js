@@ -140,3 +140,21 @@ function getGreatestIncreaseInProfits(data) {
 }
 
 console.log('Greatest Increase in Profits/Losses: ' + getGreatestIncreaseInProfits(finances));
+
+// The greatest decrease in losses (date and difference in the amounts) over the entire period.
+function getGreatestDecreaseInLosses(data) {
+    var diffAmount = data[1][1] - data[0][1];
+    var minDate = data[1][0];
+
+    for (let i = 1; i < data.length; i++) {
+        var amount = data[i][1] - data[i - 1][1];
+        if (amount < diffAmount) {
+            diffAmount = amount;
+            minDate = data[i][0];
+        }
+    }
+
+    return minDate + ' ($' + diffAmount + ')';
+}
+
+console.log('Greatest Decrease in Profits/Losses: ' + getGreatestDecreaseInLosses(finances));
