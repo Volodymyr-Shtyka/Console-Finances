@@ -106,3 +106,19 @@ function getTheNetTotalAmount(data) {
 }
 
 console.log('Total: $' + getTheNetTotalAmount(finances));
+
+// The average of the changes in Profit/Losses over the entire period.
+function getAverageOfChanges(data) {
+    var total = 0;
+    var numberOfMonths = getTotalNumberOfMonths(data);
+
+    for (let i = 1; i < numberOfMonths; i++) {
+        total += data[i][1] - data[i - 1][1];
+    }
+
+    var average = total / (numberOfMonths - 1);
+
+    return average.toFixed(2);
+}
+
+console.log('Average Change: ' + getAverageOfChanges(finances));
