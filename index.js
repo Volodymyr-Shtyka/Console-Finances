@@ -93,3 +93,16 @@ function getTotalNumberOfMonths(data) {
 }
 
 console.log('Total Months: ' + getTotalNumberOfMonths(finances));
+
+// The net total amount of Profit/Losses over the entire period.
+function getTheNetTotalAmount(data) {
+    var totalNetAmount = 0;
+
+    for (let i = 0; i < data.length; i++) {
+        totalNetAmount += data[i][1];
+    }
+
+    return totalNetAmount;
+}
+
+console.log('Total: $' + getTheNetTotalAmount(finances));
