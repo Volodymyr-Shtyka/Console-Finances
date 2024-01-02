@@ -122,3 +122,21 @@ function getAverageOfChanges(data) {
 }
 
 console.log('Average Change: ' + getAverageOfChanges(finances));
+
+// The greatest increase in profits (date and difference in the amounts) over the entire period.
+function getGreatestIncreaseInProfits(data) {
+    var diffAmount = data[1][1] - data[0][1];
+    var maxDate = data[1][0];
+
+    for (let i = 1; i < data.length; i++) {
+        var amount = data[i][1] - data[i - 1][1];
+        if (amount > diffAmount) {
+            diffAmount = amount;
+            maxDate = data[i][0];
+        }
+    }
+
+    return maxDate + ' ($' + diffAmount + ')';
+}
+
+console.log('Greatest Increase in Profits/Losses: ' + getGreatestIncreaseInProfits(finances));
